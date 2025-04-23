@@ -261,8 +261,6 @@ fi
 . ${HOST_SCRIPT_CONFIG}
 [ -z "${BACKUP_STEP}" ] && BACKUP_STEP="container"
 
-info "Starting volume backup"
-
 if [ "${BACKUP_STEP}" == "container" ]; then
     LOG_OUTPUT=${LOG_FILE}
     run_container
