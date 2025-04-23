@@ -179,6 +179,10 @@ run_container() {
         docker_command="${docker_command} --volume ${volume}:${CONTAINER_SOURCE_PATH}/${volume}:ro"
     done
 
+    # De quoi avoir le bon horodatage dans le conteneur
+    docker_command="${docker_command} --volume /etc/timezone:/etc/timezone:ro"
+    docker_command="${docker_command} --volume /etc/localtime:/etc/localtime:ro"
+
     # Définition de l'étape
     docker_command="${docker_command} --env BACKUP_STEP=${next_step}"
 
