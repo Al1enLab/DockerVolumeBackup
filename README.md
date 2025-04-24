@@ -8,7 +8,7 @@ Ce script se configure *via* le fichier `config.sh` présent dans le même répe
 Les variables suivantes sont présentes dans le fichier de configuration :
 | Variable          | Obligatoire |        Défaut   | Description                                                          |
 |-------------------|-------------|-----------------|----------------------------------------------------------------------|
-| `DOCKER_VOLUME`   | **Oui**     | -               | `Bash array` contenant la liste des volumes à sauvegarder            |
+| `DOCKER_VOLUMES`  | **Oui**     | -               | `Bash array` contenant la liste des volumes à sauvegarder            |
 | `BACKUP_DIR`      | **Oui**     | -               | Répertoire dans lequel enregistrer les sauvegardes                   |
 | `KEEP_FILES`      | Non         | 10              | Nombre de versions à conserver (10 par défaut)                       |
 | `LOG_FILE`        | Non         | -               | Fichier de log à utiliser (pas de log sur disque si absent)          |
@@ -18,8 +18,8 @@ Les variables suivantes sont présentes dans le fichier de configuration :
 
 ## Fonctionnement
 Le script importe sa configuration, puis lance un conteneur dans lequel :
-- le script monte son propre répertoire
-- sont montés l'ensemble des volumes du fichier de configuration dans un répertoire dédié
+- le script monte son propre répertoire dans le conteneur
+- sont montés l'ensemble des volumes listés dans le fichier de configuration (`DOCKER_VOLUMES`) dans un répertoire dédié
 - est monté le répertoire de destination des sauvegardes
 - est monté, si besoin, le fichier de log
 - sont montés `/etc/timezone` et `/etc/localtime`
